@@ -8,7 +8,6 @@ import {BrowserRouter, Route} from "react-router-dom";
 import Offices from "./components/Offices/Offices";
 import Employees from "./components/Employees/Employees";
 
-
 const App = (props) => {
     return (
         <BrowserRouter>
@@ -16,10 +15,10 @@ const App = (props) => {
                 <Header/>
                 <Navbar/>
                 <div class='app-wrapper-content'>
-                    <Route exact path='/dialogs' component={Dialogs}/>
-                    <Route exact path = '/profile' component={Profile}/>
-                    <Route path ='/offices' component={Offices}/>
-                    <Route path='/employees' component={Employees}/>
+                    <Route exact path='/dialogs' render={() => <Dialogs dialogs={props.dialogs} messages ={props.messages}/>}/>
+                    <Route exact path = '/profile' render={() => <Profile posts={props.posts}/>}/>
+                    <Route path ='/offices' render={() => <Offices information={props.officeInformation}/>}/>
+                    <Route path='/employees' render={() => <Employees/>}/>
                 </div>
             </div>
         </BrowserRouter>

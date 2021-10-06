@@ -1,0 +1,20 @@
+.mainTable{
+    margin-right: auto;
+    margin-left: auto;
+    border-spacing: 15px 5px;
+    background-color: cornflowerblue;
+    color: white;
+}
+.tableItem{
+    padding: 5px; /* Поля вокруг текста */
+    border: 1px solid #a52a2a;
+}
+.informationTable{
+border-radius: 10px;
+    padding-top: 5px;
+    border: 2px double #333;
+    margin-right: auto;
+    margin-left: auto;
+    border-spacing: 30px 5px;
+
+}
