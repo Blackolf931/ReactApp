@@ -1,9 +1,5 @@
 .mainTable{
-    margin-right: auto;
-    margin-left: auto;
-    border-spacing: 15px 5px;
-    background-color: cornflowerblue;
-    color: white;
+    margin-left: 10px;
 }
 .tableItem{
     padding: 5px; /* Поля вокруг текста */

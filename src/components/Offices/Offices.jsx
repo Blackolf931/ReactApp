@@ -1,36 +1,49 @@
 import React from "react";
 import s from "./Offices.module.css"
-import Message from "../Dialogs/Message/Message";
+import {Button, Table} from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const Offices = (props) => {
-
-    let officeInformation = props.information
-        .map(info => <tr><td>{info.officeName}</td>
+    let officeInformation = props.data.officeInformation
+        .map(info => <tr>
+            <td>{info.officeName}</td>
             <td>{info.address}</td>
             <td>{info.country}</td>
-        <button>X</button>
+            <Button variant="contained" component="span">Update</Button>
+            <Button variant="outlined" color="error" startIcon={<DeleteIcon/>}>
+                Delete
+            </Button>
         </tr>);
+    /*    console.log(props.data.office)
+        let testr = props.data.office.map(el=><ul>{el.id}</ul>)*/
+    /*    console.log(testr);*/
     return (
         <div>
-            <table className={s.mainTable}>
+            {/*     {testr}*/}
+            {/* */}
+            <Table className={s.mainTable}>
                 <tr>
                     <td>
                         OfficeName
                     </td>
-                        <td>
-                            Address
-                        </td>
+                    <td>
+                        Address
+                    </td>
                     <td>
                         Country
                     </td>
                 </tr>
-                <tr>{officeInformation}</tr>
-            </table>
-
-          {/*  <table className={s.informationTable}>
-                {informationTable}
-            </table>*/}
+                {officeInformation}
+            </Table>
         </div>
     )
 }
 export default Offices
+
+
+{/*<input placeholder="Enter in a username" />
+                <button onClick={this.fetchUser}>Search</button>
+                <ul firstName={this.state.fetchUser.categoryId} lastName={this.state.fetchUser.categoryName} email={this.state.fetchUser.products} />
+           */
+}

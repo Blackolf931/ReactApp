@@ -4,24 +4,28 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import Profile from "./components/Profile/Profile";
 import Dialogs from "./components/Dialogs/Dialogs";
-import {BrowserRouter, Route} from "react-router-dom";
 import Offices from "./components/Offices/Offices";
 import Employees from "./components/Employees/Employees";
+import {Route} from "react-router-dom";
+import GetOffice from "./components/Offices/GetOffice";
 
 const App = (props) => {
+    /*console.log(props.state.office)*/
     return (
-        <BrowserRouter>
-            <div className='app-wrapper'>
-                <Header/>
-                <Navbar/>
-                <div class='app-wrapper-content'>
-                    <Route exact path='/dialogs' render={() => <Dialogs dialogs={props.dialogs} messages ={props.messages}/>}/>
-                    <Route exact path = '/profile' render={() => <Profile posts={props.posts}/>}/>
-                    <Route path ='/offices' render={() => <Offices information={props.officeInformation}/>}/>
-                    <Route path='/employees' render={() => <Employees/>}/>
-                </div>
+        <div className='app-wrapper'>
+            <Header/>
+            <Navbar/>
+            <div className ='app-wrapper-content'>
+                <Route exact path='/dialogs' render={() =>
+                    <Dialogs state={props.state.messagesPage}/>}/>
+                <Route exact path='/profile' render={() =>
+                    <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                <Route path='/offices' render={() =>
+                    <Offices data={props.state.officePage}/>}/>
+                <Route path='/employees' render={() =>
+                    <Employees/>}/>
             </div>
-        </BrowserRouter>
+        </div>
     );
 }
 
