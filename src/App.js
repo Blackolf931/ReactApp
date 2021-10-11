@@ -7,19 +7,20 @@ import Dialogs from "./components/Dialogs/Dialogs";
 import Offices from "./components/Offices/Offices";
 import Employees from "./components/Employees/Employees";
 import {Route} from "react-router-dom";
-import GetOffice from "./components/Offices/GetOffice";
 
 const App = (props) => {
-    /*console.log(props.state.office)*/
     return (
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
-            <div className ='app-wrapper-content'>
+            <div className='app-wrapper-content'>
                 <Route exact path='/dialogs' render={() =>
-                    <Dialogs state={props.state.messagesPage}/>}/>
+                    <Dialogs state={props.state.messagesPage}
+                             addMessage={props.addMessage}
+                             updateNewMessageTest={props.updateNewMessageText}/>}/>
                 <Route exact path='/profile' render={() =>
-                    <Profile state={props.state.profilePage} addPost={props.addPost}/>}/>
+                    <Profile profilePage ={props.state.profilePage}
+                             dispatch={props.dispatch}/>}/>
                 <Route path='/offices' render={() =>
                     <Offices data={props.state.officePage}/>}/>
                 <Route path='/employees' render={() =>

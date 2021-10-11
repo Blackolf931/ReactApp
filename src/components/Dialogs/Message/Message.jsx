@@ -1,6 +1,5 @@
 import React from "react";
 import s from './../Dialogs.module.css'
-import {TextField} from "@mui/material";
 
 const Message = (props) => {
     return (
