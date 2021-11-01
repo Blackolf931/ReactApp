@@ -1,48 +1,23 @@
 import React from "react";
-import s from './MyPosts.module.css'
-import Posts from "./Post/Posts";
-import {Button} from "@mui/material";
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
+import MyPosts from "./MyPosts";
 
-
-
-
-const MyPosts = (props) => {
-
-    let postsElements = props.posts
-        .map(p => <Posts message={p.message} countsLike={p.countsLike}/>)
-
-    let newPostElement = React.createRef();
+const MyPostsContainer = (props) => {
+let state = props.store.getState();
 
     let addPost = () => {
-        //props.addPost();
-        props.dispatch(addPostActionCreator());
+        props.store.dispatch(addPostActionCreator());
     }
 
-    let onPostChange =() => {
-        let text = newPostElement.current.value;
-        //props.updateNewPostText(text);
-        props.dispatch(updateNewPostTextActionCreator(text));
+    let onPostChange =(text) => {
+        let action = updateNewPostTextActionCreator(text);
+        props.store.dispatch(action);
     }
 
-    return <div className={s.postsBlock}>
-        <h3>My Posts</h3>
-        <div>
-            <div>
-                <textarea onChange={onPostChange}
-                          ref={newPostElement}
-                          value={props.newPostText}
-                          placeholder="Add new post"/>
-            </div>
-            <div>
-                <Button variant="contained" color="success" onClick={addPost}>
-                    Add Post
-                </Button>
-            </div>
-        </div>
-        <div className={s.posts}>
-            {postsElements}
-        </div>
-    </div>
+    return (<MyPosts addPost = {addPost}
+                     updateNewPostText = {onPostChange}
+                     posts = {state.profilePage.posts}
+                     newPostText ={state.profilePage.newPostText}
+    />)
 }
-export default MyPosts;
+export default MyPostsContainer;

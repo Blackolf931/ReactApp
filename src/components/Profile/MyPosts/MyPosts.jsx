@@ -2,10 +2,6 @@ import React from "react";
 import s from './MyPosts.module.css'
 import Posts from "./Post/Posts";
 import {Button} from "@mui/material";
-import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profile-reducer";
-
-
-
 
 const MyPosts = (props) => {
 
@@ -14,15 +10,13 @@ const MyPosts = (props) => {
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        //props.addPost();
-        props.dispatch(addPostActionCreator());
+    let onAddPost = () => {
+        props.addPost();
     }
 
     let onPostChange =() => {
         let text = newPostElement.current.value;
-        //props.updateNewPostText(text);
-        props.dispatch(updateNewPostTextActionCreator(text));
+        props.updateNewPostText(text);
     }
 
     return <div className={s.postsBlock}>
@@ -35,7 +29,7 @@ const MyPosts = (props) => {
                           placeholder="Add new post"/>
             </div>
             <div>
-                <Button variant="contained" color="success" onClick={addPost}>
+                <Button variant="contained" color="success" onClick={onAddPost}>
                     Add Post
                 </Button>
             </div>
