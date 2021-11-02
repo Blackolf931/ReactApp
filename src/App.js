@@ -8,19 +8,18 @@ import Employees from "./components/Employees/Employees";
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 
-const App = (props) => {
+const App = () => {
     return (
         <div className='app-wrapper'>
             <Header/>
             <Navbar/>
             <div className='app-wrapper-content'>
                 <Route exact path='/dialogs' render={() =>
-                    <DialogsContainer store={props.store}
-                    />}/>
+                    <DialogsContainer />}/>
                 <Route exact path='/profile' render={() =>
-                    <Profile store={props.store}/>}/>
+                    <Profile/>}/>
                 <Route path='/offices' render={() =>
-                    <Offices data={props.state.officePage}/>}/>
+                    <Offices/>}/>
                 <Route path='/employees' render={() =>
                     <Employees/>}/>
             </div>

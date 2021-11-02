@@ -6,14 +6,14 @@ import './index.css';
 import App from './App';
 import {BrowserRouter} from "react-router-dom";
 import store from "./redux/redux-store";
+import Provider from "./StoreContext";
 
-let rerenderEntireThree = (state) => {
+let rerenderEntireThree = () => {
     ReactDOM.render(
         <BrowserRouter>
-            <App state={state}
-                 dispatch={store.dispatch.bind(store)}
-                 store={store}
-            />
+            <Provider store = {store}>
+            <App/>
+            </Provider>
         </BrowserRouter>,
         document.getElementById('root')
     );
