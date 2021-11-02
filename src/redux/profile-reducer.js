@@ -1,7 +1,7 @@
 const updateNewPostText = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
 
-let initialState ={
+let initialState = {
     posts: [
         {id: 1, message: 'Hello world', countsLike: 2},
         {id: 2, message: 'Hi, how are you?', countsLike: 13},
@@ -17,14 +17,16 @@ const profileReducer = (state = initialState, action) => {
                 message: state.newPostText,
                 countsLike: 0
             };
-            let stateCopy = {...state};
-            stateCopy.posts = [...state.posts]
-            stateCopy.posts.push(newPost);
-            return stateCopy;
+            return {
+                ...state,
+                posts: [...state.posts, newPost],
+                newPostText: ''
+            };
         case updateNewPostText: {
-            let stateCopy = {...state};
-            stateCopy.newPostText = action.newText
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.newText
+            };
         }
         default :
             return state;

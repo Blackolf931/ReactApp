@@ -6,7 +6,7 @@ import {Button} from "@mui/material";
 const MyPosts = (props) => {
 
     let postsElements = props.posts
-        .map(p => <Posts message={p.message} countsLike={p.countsLike}/>)
+        .map(p => <Posts message={p.message} countsLike={p.countsLike} key ={p.id}/>)
 
     let newPostElement = React.createRef();
 
