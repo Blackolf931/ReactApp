@@ -4,7 +4,7 @@ import dialogsReducer from "./dialogs-reducer";
 import officeReducer from "./office-reducer";
 import sidebarReducer from "./sidebar-reducer";
 
-let reducers = combineReducers({
+let reducers = combineReducers ({
     profilePage: profileReducer,
     dialogsPage: dialogsReducer,
     officePage: officeReducer,
