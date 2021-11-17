@@ -7,6 +7,8 @@ import Offices from "./components/Offices/Offices";
 import Employees from "./components/Employees/Employees";
 import {Route} from "react-router-dom";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import UsersContainer from "./components/Users/UsersContainer";
+
 
 const App = () => {
     return (
@@ -18,6 +20,7 @@ const App = () => {
                     <DialogsContainer />}/>
                 <Route exact path='/profile' render={() =>
                     <Profile/>}/>
+                <Route path='/users' render={() => <UsersContainer/>}/>
                 <Route path='/offices' render={() =>
                     <Offices/>}/>
                 <Route path='/employees' render={() =>
