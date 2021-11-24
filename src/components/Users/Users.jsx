@@ -1,25 +1,42 @@
 import React from "react";
-import {Button, debounce} from "@mui/material";
+import {Button, debounce, Pagination} from "@mui/material";
 import style from "./user.module.css";
 import * as axios from "axios";
-import userPhoto from '../../assets/images/user.png'
+import userPhoto from "../../assets/images/user.png"
 
 class Users extends React.Component {
 
     componentDidMount() {
-        axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
             this.props.setUsers(response.data.items);
+                this.props.setTotalUserCount(/*response.data.totalCount*/10);
         });
+    }
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber)
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items);
+            });
     }
 
     render() {
+
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+
+        let pages = [];
+
+        for(let i = 1; i <= pagesCount; i++) {
+            pages.push(i);
+        }
+
         return <div>
             <div>
-                <span>1</span>
-                <span className={style.selectedPage}>2</span>
-                <span>3</span>
-                <span>4</span>
-                <span>5</span>
+                {pages.map(p=> {
+                    return <span className={this.props.currentPage === p && style.selectedPage}
+                                       onClick={(e) => {this.onPageChanged(p)}}>{p}</span>})}
+
             </div>
             {
                 this.props.users.map(u => <div key={u.id}>
