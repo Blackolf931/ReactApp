@@ -12,16 +12,8 @@ let Users = (props) => {
     for(let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    return <div>
-        <div>
-            {pages.map(p => {
-                return <span className={props.currentPage === p && style.selectedPage}
-                             onClick={(e) => {
-                                 props.onPageChanged(p)
-                             }}>{p}</span>
-            })}
 
-        </div>
+    return <div>
         {
             props.users.map(u => <div key={u.id}>
             <span>
@@ -51,7 +43,7 @@ let Users = (props) => {
         }
         <Pagination count={pagesCount} variant="outlined" color="primary" defaultPage={1}
                     onClick={(e) => {
-                        this.props.onPageChanged(e.currentTarget.getElementsByTagName("MuiButtonBase-root").item())
+                        pages.map(p=> {props.onPageChanged(p)})
                     }}>{props.currentPage}</Pagination>
     </div>
 }
