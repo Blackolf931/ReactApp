@@ -9,7 +9,7 @@ const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader/>
     }
-    debugger;
+
     return (
         <div>
             <div>
@@ -18,9 +18,9 @@ const ProfileInfo = (props) => {
             </div>
             <div className={s.descriptionBlock}>
                 <Avatar alt="Remy Sharp" src={props.profile.photos.large} sx={{width: 100, height: 100}}/>
-               <Contacts profile={props.profile}/>
+                <div> {props.profile.fullName}</div>
+                <Contacts profile={props.profile}/>
                 <JobInfo profile={props.profile}/>
-                ava + description
             </div>
         </div>
     )
