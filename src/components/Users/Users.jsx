@@ -1,7 +1,8 @@
 import style from "./user.module.css";
 import userPhoto from "../../assets/images/user.png";
-import {Button, Pagination} from "@mui/material";
+import { Button, Pagination } from "@mui/material";
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 
 let Users = (props) => {
@@ -9,42 +10,44 @@ let Users = (props) => {
 
     let pages = [];
 
-    for(let i = 1; i <= pagesCount; i++) {
+    for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
 
     return <div>
         {
             props.users.map(u => <div key={u.id}>
-            <span>
-                <div>
-                <img src={u.photos.value != null ? u.photos : userPhoto} className={style.userPhoto}/>
+                <span>
+                    <div>
+                        <NavLink to ={'/profile/' + u.id}>
+                            <img src={u.photos.value != null ? u.photos : userPhoto} className={style.userPhoto} />
+                        </NavLink>
                     </div>
-                <div>
-                    {u.followed ? <Button onClick={() => {
-                        props.unfollow(u.id)
-                    }}>Unfollow</Button> : <Button onClick={() => {
-                        props.follow(u.id)
-                    }}>Follow</Button>}
-                </div>
-            </span>
+                    <div>
+                        {u.followed ? <Button onClick={() => {
+                            props.unfollow(u.id)
+                        }}>Unfollow</Button> : <Button onClick={() => {
+                            props.follow(u.id)
+                        }}>Follow</Button>}
+                    </div>
+                </span>
+                <span>
                     <span>
-                <span>
-                    <div>{u.name}</div>
-                    <div>{u.status}</div>
+                        <div>{u.name}</div>
+                        <div>{u.status}</div>
+                    </span>
+                    <span>
+                        <div>{"u.location.country"}</div>
+                        <div>{"u.location.city"}</div>
+                    </span>
                 </span>
-                <span>
-                    <div>{"u.location.country"}</div>
-                    <div>{"u.location.city"}</div>
-                </span>
-            </span>
-                </div>
+            </div>
             )
         }
         <Pagination count={pagesCount} variant="outlined" color="primary" defaultPage={1}
-                    onClick={(e) => {
-                        pages.map(p=> {props.onPageChanged(p)})
-                    }}>{props.currentPage}</Pagination>
+            onClick={(e) => {
+                pages.map(p => { props.onPageChanged(p) })
+            }}>{props.currentPage}</Pagination>
     </div>
 }
 export default Users
