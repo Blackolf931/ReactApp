@@ -1,4 +1,3 @@
-import preloader from "../../../assets/images/preloader.svg";
 import React from "react";
 
 let NotInFormationAboutSocialNetwork = (props) => {
