@@ -1,5 +1,5 @@
 const UPDATE_NEW_POST_TEXT = 'UPDATE_NEW_POST_TEXT';
-const ADD_POST = 'ADD-POST';
+const ADD_POST = 'ADD_POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 
 let initialState = {
@@ -54,4 +54,5 @@ export const updateNewPostTextActionCreator = (text) => {
     }
 }
 
-export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile}) 
+
+export const setUserProfile = (profile) => ({type: SET_USER_PROFILE, profile})
