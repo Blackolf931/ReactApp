@@ -32,7 +32,7 @@ let Users = (props) => {
                                     headers: {"API-KEY" : "a632b571-d1bd-4283-83c5-241da0bc73f5"}
                                 })
                                     .then(response => {
-                                        if (response.data.resultCode == 0) {
+                                        if (response.data.resultCode === 0) {
                                             props.unfollow(u.id);
                                         }
                                     });
@@ -45,7 +45,7 @@ let Users = (props) => {
                                     headers: {"API-KEY" : "a632b571-d1bd-4283-83c5-241da0bc73f5"}
                                 })
                                     .then(response => {
-                                        if (response.data.resultCode == 0) {
+                                        if (response.data.resultCode === 0) {
                                             props.follow(u.id);
                                         }
                                     });
