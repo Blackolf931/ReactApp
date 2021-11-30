@@ -10,7 +10,7 @@ const Header = (props) => {
         <div className={s.loginBlock}>
             {
                 props.isAuth ? props.login :
-                    <Button href={'/login'}>Login fdasdasda</Button>
+                    <Button href={'/login'}>Login</Button>
             }
         </div>
 
