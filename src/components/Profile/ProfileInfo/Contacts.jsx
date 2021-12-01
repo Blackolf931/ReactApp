@@ -3,7 +3,6 @@ import React from "react";
 
 
 let Contacts = (props) => {
-    debugger;
     return (
         <div>
             My Social network :

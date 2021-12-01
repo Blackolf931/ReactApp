@@ -3,8 +3,6 @@ import userPhoto from "../../assets/images/user.png";
 import {Button, Pagination} from "@mui/material";
 import React from "react";
 import {NavLink} from "react-router-dom";
-import * as axios from "axios";
-import {usersAPI} from "../../api/api";
 
 
 let Users = (props) => {
@@ -22,16 +20,16 @@ let Users = (props) => {
                 <span>
                     <div>
                         <NavLink to={'/profile/' + u.id}>
-                            <img src={u.photos.value != null ? u.photos : userPhoto} className={style.userPhoto}/>
+                            <img src={u.photos.value !== null ? u.photos : userPhoto} className={style.userPhoto}/>
                         </NavLink>
                     </div>
                     <div>
                         {u.followed ?
-                            <Button disabled={props.followingInProgress.some(id => id == u.id)} onClick={() => {
+                            <Button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
                                 props.unfollow(u.id);
                             }}>Unfollow</Button> :
 
-                            <Button disabled={props.followingInProgress.some(id => id == u.id)} onClick={() => {
+                            <Button disabled={props.followingInProgress.some(id => id === u.id)} onClick={() => {
                                 props.follow(u.id);
                             }}>Follow</Button>}
                     </div>

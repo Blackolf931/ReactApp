@@ -1,6 +1,4 @@
 import {usersAPI} from "../api/api";
-import {setUserProfile} from "./profile-reducer";
-import {setAuthUserData} from "./auth-reducer";
 
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
@@ -57,7 +55,7 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state, followingInProgress: action.isFetching
                     ? [...state.followingInProgress, action.userId]
-                    : [...state.followingInProgress.filter(id => id != action.userId)]
+                    : [...state.followingInProgress.filter(id => id !== action.userId)]
             }
         }
         default :
