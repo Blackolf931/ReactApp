@@ -1,6 +1,5 @@
 import React from "react";
 import s from '../Header.module.css';
-import {NavLink} from "react-router-dom";
 import {Button} from "@mui/material";
 
 const Header = (props) => {
@@ -9,7 +8,7 @@ const Header = (props) => {
 
         <div className={s.loginBlock}>
             {
-                props.isAuth ? props.login :
+                props.isAuth === true ? props.login :
                     <Button href={'/login'}>Login</Button>
             }
         </div>

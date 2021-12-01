@@ -3,39 +3,40 @@ import React from "react";
 
 
 let Contacts = (props) => {
+    debugger;
     return (
         <div>
             My Social network :
             <div>
-                Facebook : {props.profile.contacts.facebook != null ? props.profile.contacts.facebook :
+                Facebook : {props.profile.data.contacts.facebook != null ? props.profile.data.contacts.facebook :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
             <div>
-                Website: {props.profile.contacts.website != null ? props.profile.contacts.website :
+                Website: {props.profile.data.contacts.website != null ? props.profile.data.contacts.website :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
             <div>
-                VK: {props.profile.contacts.vk != null ? props.profile.contacts.vk :
+                VK: {props.profile.data.contacts.vk != null ? props.profile.data.contacts.vk :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
             <div>
-                Twitter: {props.profile.contacts.twitter != null ? props.profile.contacts.twitter :
+                Twitter: {props.profile.data.contacts.twitter != null ? props.profile.data.contacts.twitter :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
             <div>
-                Instagram: {props.profile.contacts.instagram != null ? props.profile.contacts.instagram :
+                Instagram: {props.profile.data.contacts.instagram != null ? props.profile.data.contacts.instagram :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
             <div>
-                Youtube: {props.profile.contacts.youtube != null ? props.profile.contacts.youtube :
+                Youtube: {props.profile.data.contacts.youtube != null ? props.profile.data.contacts.youtube :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
             <div>
-                Gihub: {props.profile.contacts.github != null ? props.profile.contacts.github :
+                Gihub: {props.profile.data.contacts.github != null ? props.profile.data.contacts.github :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
             <div>
-                MainLink: {props.profile.contacts.mainLink != null ? props.profile.contacts.mainLink :
+                MainLink: {props.profile.data.contacts.mainLink != null ? props.profile.data.contacts.mainLink :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
         </div>
