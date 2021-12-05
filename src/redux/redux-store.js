@@ -5,7 +5,7 @@ import officeReducer from "./office-reducer";
 import sidebarReducer from "./sidebar-reducer";
 import userReducer from "./user-reducer";
 import authReducer from "./auth-reducer";
-import thunkMiddleware from "redux-thunk";
+import thunkMiddleware from 'redux-thunk';
 
 let reducers = combineReducers ({
     profilePage: profileReducer,
