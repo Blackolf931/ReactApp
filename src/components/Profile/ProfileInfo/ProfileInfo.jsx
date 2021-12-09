@@ -14,9 +14,11 @@ const ProfileInfo = (props) => {
     return (
         <div>
             <div className={s.descriptionBlock}>
-                <Avatar alt="Remy Sharp" src={props.profile.data.photos.large == null ? userAvatar : props.profile.data.photos.large } sx={{width: 100, height: 100}}/>
+                <Avatar alt="Remy Sharp"
+                        src={props.profile.data.photos.large == null ? userAvatar : props.profile.data.photos.large}
+                        sx={{width: 100, height: 100}}/>
                 <div> {props.profile.fullName}</div>
-                <ProfileStatus status={"test"}/>
+                <ProfileStatus status ={props.status} updateStatus = {props.updateStatus}/>
                 <Contacts profile={props.profile}/>
                 <JobInfo profile={props.profile}/>
             </div>
