@@ -5,6 +5,7 @@ import Message from "./Message/Message";
 import {Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import {Redirect} from "react-router-dom";
+import {Field, reduxForm} from "redux-form";
 
 const Dialogs = (props) => {
 
@@ -12,14 +13,9 @@ const Dialogs = (props) => {
 
     let dialogsElements = state.dialogs.map(dialog => <DialogItem name={dialog.name} key={dialog.id} id={dialog.id}/>);
     let messagesElement = state.messages.map(message => <Message message={message.message} key={message.id}/>);
-    let newMessageBody = state.newMessageBody;
 
-    let onSendMessageClick = () => {
-        props.sendMessage();
-    }
-    let onMessageChange = (e) => {
-        let body = e.target.value;
-        props.updateNewMessageBody(body);
+    let addNewMessage = (values) => {
+        props.sendMessage(values.newMessageBody);
     }
 
     if (!props.isAuth)
@@ -32,14 +28,23 @@ const Dialogs = (props) => {
             </div>
             <div className={s.messages}>
                 {messagesElement}
-                <div>
-                    <textarea onChange={onMessageChange}
-                              value={newMessageBody}
-                              placeholder="Message"/>
-                    <Button variant="contained" endIcon={<SendIcon/>} onClick={onSendMessageClick}/>
-                </div>
+                <AddMessageFormRedux onSubmit ={addNewMessage}/>
             </div>
         </div>
     )
 }
+
+const AddMessageForm = (props) => {
+    return (
+        <form onSubmit={props.handleSubmit}>
+            <div>
+                <Field component="textarea" name="newMessageBody" placeholder="Enter your message"/>
+                <button variant="contained" endIcon={<SendIcon/>}/> Send
+            </div>
+        </form>
+    )
+}
+
+const AddMessageFormRedux = reduxForm({form: "dialogAddMessageForm"})(AddMessageForm)
+
 export default Dialogs
