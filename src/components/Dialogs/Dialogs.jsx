@@ -6,6 +6,8 @@ import {Button} from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import {Redirect} from "react-router-dom";
 import {Field, reduxForm} from "redux-form";
+import {Textarea} from "../Common/FormsControls/FormsControls";
+import {maxLengthCreator, required} from "../../utils/validators/validator";
 
 const Dialogs = (props) => {
 
@@ -34,11 +36,16 @@ const Dialogs = (props) => {
     )
 }
 
+const maxLength50 = maxLengthCreator(50);
+
 const AddMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field component="textarea" name="newMessageBody" placeholder="Enter your message"/>
+                <Field component= {Textarea}
+                       validate={[required, maxLength50]}
+                       name="newMessageBody"
+                       placeholder="Enter your message"/>
                 <button variant="contained" endIcon={<SendIcon/>}/> Send
             </div>
         </form>

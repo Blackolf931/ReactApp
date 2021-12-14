@@ -1,16 +1,23 @@
 import React from 'react';
-import {Button, Checkbox, FormControlLabel, Input, TextField} from "@mui/material";
+import {Button, Checkbox, FormControlLabel, TextField} from "@mui/material";
 import {Field, reduxForm} from "redux-form";
+import {Input} from "../Common/FormsControls/FormsControls";
+import {required} from "../../utils/validators/validator";
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={"Login"} name={"login"} component={'input'}/>
+                <Field placeholder={"Login"} name={"login"} component={Input}
+                validate={[required]}
+                />
             </div>
-            <div><Field placeholder={"Password"} name={"password"} component={'input'}/></div>
+            <div><Field placeholder={"Password"}
+                        name={"password"}
+                        component={Input}
+                        validate={[required]}/></div>
             <div>
-                <Field component={'input'} type={"checkbox"} name={"rememberMe"}/> Remember me
+                <Field component={Input} type={"checkbox"} name={"rememberMe"}/> Remember me
             </div>
             <div>
                 <button variant="contained">Login</button>
