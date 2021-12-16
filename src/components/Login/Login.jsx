@@ -3,17 +3,21 @@ import {Button, Checkbox, FormControlLabel, TextField} from "@mui/material";
 import {Field, reduxForm} from "redux-form";
 import {Input} from "../Common/FormsControls/FormsControls";
 import {required} from "../../utils/validators/validator";
+import {connect} from "react-redux";
+import {login} from "../../redux/auth-reducer";
+import {Redirect} from "react-router-dom";
 
 const LoginForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit}>
             <div>
-                <Field placeholder={"Login"} name={"login"} component={Input}
+                <Field placeholder={"Email"} name={"email"} component={Input}
                 validate={[required]}
                 />
             </div>
             <div><Field placeholder={"Password"}
                         name={"password"}
+                        type ={"password"}
                         component={Input}
                         validate={[required]}/></div>
             <div>
@@ -32,8 +36,12 @@ const LoginReduxForm = reduxForm({
 
 const Login = (props) => {
 
-    const onSubmit = (formdata) => {
-        console.log(formdata);
+    const onSubmit = (formData) => {
+        props.login(formData.email, formData.password, formData.rememberMe);
+    }
+
+    if(props.isAuth){
+        return <Redirect to={"/profile"}/>
     }
 
     return <div>
@@ -42,5 +50,9 @@ const Login = (props) => {
     </div>
 }
 
+const mapStateToProps = (state) => ({
+    isAuth : state.auth.isAuth
+})
 
-export default Login;
+
+export default connect(mapStateToProps, {login}) (Login);
