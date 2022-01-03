@@ -6,6 +6,7 @@ import Contacts from "./Contacts";
 import JobInfo from "./JobInfo";
 import userAvatar from "../../../assets/images/user.png"
 import ProfileStatus from "./ProfileStatus";
+import ProfileStatusWithHooks from "./ProfileStatusWithHooks";
 
 const ProfileInfo = (props) => {
     if (!props.profile) {
@@ -18,7 +19,7 @@ const ProfileInfo = (props) => {
                         src={props.profile.data.photos.large == null ? userAvatar : props.profile.data.photos.large}
                         sx={{width: 100, height: 100}}/>
                 <div> {props.profile.fullName}</div>
-                <ProfileStatus status ={props.status} updateStatus = {props.updateStatus}/>
+                <ProfileStatusWithHooks status ={props.status} updateStatus = {props.updateStatus}/>
                 <Contacts profile={props.profile}/>
                 <JobInfo profile={props.profile}/>
             </div>
