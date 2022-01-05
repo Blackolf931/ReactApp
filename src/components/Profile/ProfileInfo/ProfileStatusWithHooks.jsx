@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {Input} from '@mui/material';
 
 const ProfileStatusWithHooks = (props) => {
-
     let [editMode, setEditMod] = useState(false);
     let [status, setStatus] = useState(props.status);
 

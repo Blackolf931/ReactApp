@@ -17,13 +17,13 @@ import {connect} from "react-redux";
 
 class App extends React.Component {
     componentDidMount() {
-       this.props.initializeApp();
+        this.props.initializeApp();
     }
+
     render() {
         if (!this.props.initialized) {
             return <Preloader/>
         } else {
-
             return (
                 <div className='app-wrapper'>
                     <HeaderContainer/>
