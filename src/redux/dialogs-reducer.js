@@ -1,5 +1,6 @@
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 const SEND_MESSAGE = 'SEND-MESSAGE';
+const DELETE_MESSAGE = 'DELETE_MESSAGE';
 
 let initialState = {
     messages: [
@@ -24,6 +25,11 @@ const dialogsReducer = (state = initialState, action) => {
                 messages: [...state.messages, {id: 5, message: body}],
 
             };
+        case DELETE_MESSAGE:
+            return {
+                ...state,
+                messages: state.messages.filter(m=> m.id != action.messageId)
+            }
         default:
             return state;
     }
@@ -31,3 +37,4 @@ const dialogsReducer = (state = initialState, action) => {
 export default dialogsReducer;
 
 export const sendMessageCreator = (newMessageBody) => ({type: SEND_MESSAGE, newMessageBody})
+export const deleteMessage = (messageId) => ({type: DELETE_MESSAGE, messageId})
