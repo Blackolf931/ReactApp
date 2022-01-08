@@ -18,7 +18,8 @@ let Users = ({currentPage, totalUsersCount, pageSize, onPageChanged, users, ...p
         <Paginator currentPage={props.currentPage}
                    onPageChanged={onPageChanged}
                    totalUsersCount={totalUsersCount}
-                   pageSize={pageSize}/>
+                   pageSize={pageSize}
+                   portionSize = {10}/>
     </div>
 }
 export default Users
