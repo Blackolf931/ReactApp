@@ -2,15 +2,13 @@ import NotInFormationAboutSocialNetwork from "../../Common/Information/NotInForm
 import React from "react";
 
 
-let Contacts = (props) => {
+let Contacts = ({contactTitle, contactValue}) => {
     return (
         <div>
-            My Social network :
-            <div>
-                Facebook : {props.profile.contacts.facebook != null ? props.profile.contacts.facebook :
+            {contactTitle} :
+                 {contactValue != null ? contactValue :
                 <NotInFormationAboutSocialNetwork/>}
-            </div>
-            <div>
+          {/*  <div>
                 Website: {props.profile.contacts.website != null ? props.profile.contacts.website :
                 <NotInFormationAboutSocialNetwork/>}
             </div>
@@ -37,7 +35,7 @@ let Contacts = (props) => {
             <div>
                 MainLink: {props.profile.contacts.mainLink != null ? props.profile.contacts.mainLink :
                 <NotInFormationAboutSocialNetwork/>}
-            </div>
+            </div>*/}
         </div>
     )
 }
